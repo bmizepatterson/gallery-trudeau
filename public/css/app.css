@@ -10290,7 +10290,8 @@ a.text-dark:focus {
   text-decoration: none;
 }
 
-.brand {
+.brand,
+.navbar .brand {
   color: #FFF27E;
 }
 
