@@ -6,17 +6,17 @@
 
 <div class="flex-center full-height position-relative">
 
-    <div class="welcome-top d-md-none h1 m-0 text-light">Gallery Trudeau</div>
+    <div class="welcome-top d-md-none h1 m-0">Gallery Trudeau</div>
 
     <div class="welcome-splash jumbotron jumbotron-fluid row m-0 justify-content-between">
 
 
         <div class="col-4 d-none d-md-flex align-items-center justify-content-center">
-            <div class="h1 m-0 text-center text-light">Gallery</div>
+            <div class="h1 m-0 text-center">Gallery</div>
         </div>
 
         <div class="col-4 d-none d-md-flex align-items-center justify-content-center">
-            <div class="h1 m-0 text-center text-light">Trudeau</div>
+            <div class="h1 m-0 text-center">Trudeau</div>
         </div>
 
     </div>
