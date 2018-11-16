@@ -10260,6 +10260,22 @@ a.text-dark:focus {
           justify-content: center;
 }
 
+.top-right {
+  position: absolute;
+  right: 5%;
+  top: 18px;
+  text-transform: uppercase;
+}
+
+.top-right a {
+  color: #f8f9fa;
+}
+
+.top-right a:hover {
+  color: #FFF27E;
+  text-decoration: none;
+}
+
 .welcome-splash {
   height: 50vh;
   width: 100%;

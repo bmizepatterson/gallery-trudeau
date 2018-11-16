@@ -26,6 +26,19 @@
     display: flex;
     justify-content: center;
 }
+.top-right {
+    position: absolute;
+    right: 5%;
+    top: 18px;
+    text-transform: uppercase;
+    a {
+        color: $light;
+    }
+    a:hover {
+        color: $primary;
+        text-decoration: none;
+    }
+}
 .welcome-splash {
     height: 50vh;
     width: 100%;
