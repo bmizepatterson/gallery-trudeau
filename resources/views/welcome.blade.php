@@ -1,89 +1,35 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.master')
 
-        <title>Gallery Trudeau</title>
+@section('title', config('app.name', 'Gallery Trudeau'))
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+@section('body')
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+<div class="flex-center full-height position-relative">
 
-            .full-height {
-                height: 100vh;
-            }
+    <div class="welcome-top d-md-none h1 m-0 text-light">Gallery Trudeau</div>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+    <div class="welcome-splash jumbotron jumbotron-fluid row m-0 justify-content-between">
 
-            .position-ref {
-                position: relative;
-            }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Gallery Trudeau
-                </div>
-            </div>
+        <div class="col-4 d-none d-md-flex align-items-center justify-content-center">
+            <div class="h1 m-0 text-center text-light">Gallery</div>
         </div>
-    </body>
-</html>
+
+        <div class="col-4 d-none d-md-flex align-items-center justify-content-center">
+            <div class="h1 m-0 text-center text-light">Trudeau</div>
+        </div>
+
+    </div>
+
+    <div class="welcome-links">
+        @auth
+            <a href="{{ route('home') }}">Home</a>
+        @else
+            <a class="px-5" href="{{ route('login') }}">Login</a>
+            <a class="px-5" href="{{ route('register') }}">Register</a>
+        @endauth
+    </div>
+
+</div>
+
+@endsection

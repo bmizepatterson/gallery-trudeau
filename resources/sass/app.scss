@@ -8,7 +8,47 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+// WELCOME PAGE
+.full-height {
+    height: 100vh;
+}
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.welcome-splash {
+    height: 50vh;
+    width: 100%;
+    background-image: url('../img/jt-welcome.png');
+    background-size: cover;
+    background-position: center;
+}
+.welcome-top {
+    position: absolute;
+    top: 10%;
+}
+.welcome-links {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: large;
+    a {
+        color: $white;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+// CARDS
+.card {
+    background-color: transparent;
+    color: $light;
+    border-color: $light-gray;
+}
+.card .card-header {
+    background-color: $light-gray;
 }
