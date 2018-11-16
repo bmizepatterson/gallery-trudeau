@@ -1,6 +1,6 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text');
 
 // Variables
 @import 'variables';
@@ -26,7 +26,10 @@
     width: 100%;
     background-image: url('../img/jt-welcome.png');
     background-size: cover;
-    background-position: center;
+    background-position: 45% center;
+    .brand {
+        font-size: 3.5rem;
+    }
 }
 .welcome-top {
     position: absolute;
@@ -45,6 +48,10 @@
     a:hover {
         text-decoration: none;
     }
+}
+
+.brand {
+    color: $primary;
 }
 
 // CARDS
