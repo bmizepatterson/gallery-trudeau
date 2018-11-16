@@ -27,4 +27,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get this user's exhibits
+     */
+    public function exhibits()
+    {
+        return $this->hasMany('App\Exhibit');
+    }
 }
