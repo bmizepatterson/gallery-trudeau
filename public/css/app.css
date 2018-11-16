@@ -10264,14 +10264,16 @@ a.text-dark:focus {
   position: absolute;
   right: 5%;
   top: 18px;
-  text-transform: uppercase;
 }
 
-.top-right a {
+.bar-link,
+.nav-item .nav-link.bar-link {
+  text-transform: uppercase;
   color: #f8f9fa;
 }
 
-.top-right a:hover {
+.bar-link:hover,
+.nav-item .nav-link.bar-link:hover {
   color: #FFF27E;
   text-decoration: none;
 }

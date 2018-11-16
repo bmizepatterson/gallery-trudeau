@@ -8,8 +8,8 @@
 
     <div class="top-right">
         @auth
-            <a class="px-4" href="{{ route('home') }}">Home</a>
-            <a class="px-4" href="{{ route('logout') }}"
+            <a class="bar-link px-4" href="{{ route('home') }}">Home</a>
+            <a class="bar-link px-4" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
@@ -19,8 +19,8 @@
                 @csrf
             </form>
         @else
-            <a class="px-4" href="{{ route('login') }}">Login</a>
-            <a class="px-4" href="{{ route('register') }}">Register</a>
+            <a class="bar-link px-4" href="{{ route('login') }}">Login</a>
+            <a class="bar-link px-4" href="{{ route('register') }}">Register</a>
         @endauth
     </div>
 

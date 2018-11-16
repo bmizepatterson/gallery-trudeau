@@ -30,11 +30,11 @@
     position: absolute;
     right: 5%;
     top: 18px;
+}
+.bar-link, .nav-item .nav-link.bar-link {
     text-transform: uppercase;
-    a {
-        color: $light;
-    }
-    a:hover {
+    color: $light;
+    &:hover {
         color: $primary;
         text-decoration: none;
     }
