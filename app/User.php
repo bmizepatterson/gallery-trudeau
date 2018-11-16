@@ -33,6 +33,6 @@ class User extends Authenticatable
      */
     public function exhibits()
     {
-        return $this->hasMany('App\Exhibit');
+        return $this->hasMany('App\Exhibit')->orderBy('updated_at', 'desc');
     }
 }

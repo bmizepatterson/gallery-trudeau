@@ -64437,6 +64437,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         exhibitJson: { type: String, required: true },
+        userJson: { type: String, required: true },
         showUrl: { type: String, required: true },
         editUrl: { type: String, required: true },
         deleteUrl: { type: String, required: true },
@@ -64450,6 +64451,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         exhibit: function exhibit() {
             return JSON.parse(this.exhibitJson);
+        },
+        user: function user() {
+            return JSON.parse(this.userJson);
         },
 
         updatedAt: function updatedAt() {
@@ -64554,10 +64558,7 @@ var render = function() {
           _c("small", [
             _c("i", { staticClass: "fas fa-user-circle mr-1" }),
             _vm._v(
-              "posted by " +
-                _vm._s(_vm.exhibit.user.name) +
-                " " +
-                _vm._s(_vm.updatedAt)
+              "posted by " + _vm._s(_vm.user.name) + " " + _vm._s(_vm.updatedAt)
             )
           ])
         ])

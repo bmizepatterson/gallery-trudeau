@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exhibit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExhibitController extends Controller
 {
@@ -24,7 +25,7 @@ class ExhibitController extends Controller
      */
     public function create()
     {
-        //
+        // No separate create page
     }
 
     /**
@@ -35,7 +36,17 @@ class ExhibitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $exhibit = new Exhibit;
+        $exhibit->title = $request->title;
+        $exhibit->year = $request->year;
+        $exhibit->artist = $request->artist;
+        $exhibit->url = $request->url;
+        $exhibit->description = $request->description;
+
+        Auth::user()->exhibits()->save($exhibit);
+
+        return redirect()->route('home')
+            ->with('status', 'Exhibit saved');
     }
 
     /**

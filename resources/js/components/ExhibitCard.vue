@@ -20,7 +20,7 @@
                         <button type="submit" class="btn btn-link py-0" data-toggle="tooltip" data-placement="top" title="Delete this exhibit"><i class="fas fa-trash"></i></button>
                     </form>
                 </div>
-                <small><i class="fas fa-user-circle mr-1"></i>posted by {{ exhibit.user.name }} {{ updatedAt }}</small>
+                <small><i class="fas fa-user-circle mr-1"></i>posted by {{ user.name }} {{ updatedAt }}</small>
             </div>
         </div>
     </div>
@@ -31,6 +31,7 @@
 export default {
     props: {
         exhibitJson: { type: String, required: true },
+        userJson: { type: String, required: true },
         showUrl: { type: String, required: true },
         editUrl: { type: String, required: true },
         deleteUrl: { type: String, required: true },
@@ -44,6 +45,9 @@ export default {
     computed: {
         exhibit() {
             return JSON.parse(this.exhibitJson);
+        },
+        user() {
+            return JSON.parse(this.userJson);
         },
         updatedAt: function() {
             return Moment(this.exhibit.updated_at).fromNow();

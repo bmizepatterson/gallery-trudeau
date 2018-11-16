@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page-title', 'Home')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -21,10 +23,10 @@
                         </div>
 
                         <div class="form-group">
-                            <input class="form-control{{ $errors->has('image_url') ? ' is-invalid' : '' }}" id="image_url" name="image_url" value="{{ old('image_url') }}" placeholder="Image url">
-                            @if ($errors->has('image_url'))
+                            <input class="form-control{{ $errors->has('url') ? ' is-invalid' : '' }}" id="url" name="url" value="{{ old('url') }}" placeholder="Image url">
+                            @if ($errors->has('url'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('image_url') }}</strong>
+                                    <strong>{{ $errors->first('url') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -58,7 +60,7 @@
                             @endif
                         </div>
 
-                        <button type="submit" class="btn btn-block btn-primary mt-3">Post</button>
+                        <button type="submit" class="btn btn-block btn-primary mt-3">Post exhibit</button>
 
                     </form>
                 </div>
@@ -70,7 +72,8 @@
     @if (Auth::user()->exhibits()->count())
         @foreach (Auth::user()->exhibits as $exhibit)
             <exhibit-card
-                exhibit-json="{{ $exhibit->with('user')->first() }}"
+                exhibit-json="{{ $exhibit }}"
+                user-json="{{ $exhibit->user }}"
                 show-url="{{ route('exhibit.show', $exhibit) }}"
                 edit-url="{{ route('exhibit.edit', $exhibit) }}"
                 delete-url="{{ route('exhibit.destroy', $exhibit) }}"
