@@ -26,6 +26,7 @@ $cyan: #6cb2eb;
 
 $pale-yellow: #FFF27E;
 $light-gray: rgba(255, 255, 255, 0.125);
+$charcoal: #181818;
 
 $primary:       $pale-yellow;
 $secondary:     $gray-600;
@@ -37,7 +38,7 @@ $light:         $gray-100;
 $dark:          $gray-800;
 
 // Body
-$body-bg: #181818;
+$body-bg: $charcoal;
 $body-color: $light;
 
 // Typography
@@ -49,7 +50,7 @@ $enable-rounded: false;
 
 // USER MENU
 $dropdown-bg: $light-gray;
-$dropdown-divider-bg: $light;
+$dropdown-divider-bg: $charcoal;
 $dropdown-link-color: $light;
 $dropdown-link-hover-bg: $primary;
 
