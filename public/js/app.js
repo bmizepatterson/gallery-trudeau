@@ -64433,6 +64433,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -64504,7 +64510,25 @@ var render = function() {
         _vm._v(" "),
         _vm.exhibit.description
           ? _c("div", { staticClass: "card-body" }, [
-              _vm._v(_vm._s(_vm.exhibit.description))
+              _c("p", [_vm._v(_vm._s(_vm.exhibit.description))]),
+              _vm._v(" "),
+              _c(
+                "small",
+                { staticClass: "d-block text-muted text-right" },
+                [
+                  _vm.exhibit.artist
+                    ? [_vm._v("By " + _vm._s(_vm.exhibit.artist))]
+                    : _vm._e(),
+                  _vm.exhibit.artist && _vm.exhibit.year
+                    ? [_vm._v(", ")]
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.exhibit.year
+                    ? [_vm._v(_vm._s(_vm.exhibit.year))]
+                    : _vm._e()
+                ],
+                2
+              )
             ])
           : _vm._e(),
         _vm._v(" "),
@@ -64558,7 +64582,7 @@ var render = function() {
           _c("small", [
             _c("i", { staticClass: "fas fa-user-circle mr-1" }),
             _vm._v(
-              "posted by " + _vm._s(_vm.user.name) + " " + _vm._s(_vm.updatedAt)
+              "Posted by " + _vm._s(_vm.user.name) + " " + _vm._s(_vm.updatedAt)
             )
           ])
         ])

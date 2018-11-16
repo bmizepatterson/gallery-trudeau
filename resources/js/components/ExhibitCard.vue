@@ -9,7 +9,13 @@
 
             <h4 class="card-header m-0"><a :href="showUrl">{{ exhibit.title }}</a></h4>
 
-            <div v-if="exhibit.description" class="card-body">{{ exhibit.description }}</div>
+            <div v-if="exhibit.description" class="card-body">
+                <p>{{ exhibit.description }}</p>
+                <small class="d-block text-muted text-right">
+                    <template v-if="exhibit.artist">By {{ exhibit.artist }}</template><template v-if="exhibit.artist && exhibit.year">, </template>
+                    <template v-if="exhibit.year">{{ exhibit.year }}</template>
+                </small>
+            </div>
 
             <div class="card-footer">
                 <div v-if="editUrl || deleteUrl" class="float-right text-muted">
@@ -20,7 +26,7 @@
                         <button type="submit" class="btn btn-link py-0" data-toggle="tooltip" data-placement="top" title="Delete this exhibit"><i class="fas fa-trash"></i></button>
                     </form>
                 </div>
-                <small><i class="fas fa-user-circle mr-1"></i>posted by {{ user.name }} {{ updatedAt }}</small>
+                <small><i class="fas fa-user-circle mr-1"></i>Posted by {{ user.name }} {{ updatedAt }}</small>
             </div>
         </div>
     </div>
