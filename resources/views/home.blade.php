@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 mb-5">
             <div class="card">
 
                 <div class="card-body">
@@ -63,15 +63,25 @@
                     </form>
                 </div>
             </div>
-
-
-            @if (Auth::user()->exhibits()->count())
-                @foreach (Auth::user()->exhibits as $exhibit)
-                    <p>{{ $exhibit->title }}</p>
-                @endforeach
-            @endif
-
         </div>
     </div>
+
+
+    @if (Auth::user()->exhibits()->count())
+        @foreach (Auth::user()->exhibits as $exhibit)
+            <exhibit-card
+                user="{{ $exhibit->user->name }}"
+                exhibit-url="{{ route('exhibit.show', $exhibit) }}"
+                edit-url="{{ route('exhibit.edit', $exhibit) }}"
+                delete-url="{{ route('exhibit.destroy', $exhibit) }}"
+                updated-at-string="{{ $exhibit->updated_at }}"
+                image-url="{{ $exhibit->url }}"
+                csrf="{{ csrf_token() }}"
+            >
+                {{ $exhibit->title }}
+            </exhibit-card>
+        @endforeach
+    @endif
+
 </div>
 @endsection
