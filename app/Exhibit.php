@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Exhibit extends Model
 {
+    use SoftDeletes;
+
     /**
      * Get this exhibit's user
      */

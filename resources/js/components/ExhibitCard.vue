@@ -1,20 +1,22 @@
 <template>
 <div class="row justify-content-center">
-    <div class="col-md-8 mb-5">
+    <div class="col-11 col-md-8 col-lg-6 my-5">
         <div class="card exhibit-image-container">
 
             <div class="exhibit-image" :style="{ backgroundImage: 'url(' + exhibit.url + ')' }">
                 <a :href="exhibit.url" target="_blank" rel="noopener noreferrer"></a>
             </div>
 
-            <h4 class="card-header m-0"><a :href="showUrl">{{ exhibit.title }}</a></h4>
-
-            <div v-if="exhibit.description" class="card-body">
-                <p>{{ exhibit.description }}</p>
-                <small class="d-block text-muted text-right">
+            <div v-if="showHeader" class="card-header">
+                <h4 class="m-0"><a :href="showUrl">{{ exhibit.title }}</a></h4>
+                <small v-if="exhibit.artist || exhibit.year" class="text-white-50">
                     <template v-if="exhibit.artist">By {{ exhibit.artist }}</template><template v-if="exhibit.artist && exhibit.year">, </template>
                     <template v-if="exhibit.year">{{ exhibit.year }}</template>
                 </small>
+            </div>
+
+            <div v-if="exhibit.description" class="card-body">
+                {{ exhibit.description }}
             </div>
 
             <div class="card-footer">
@@ -55,8 +57,11 @@ export default {
         user() {
             return JSON.parse(this.userJson);
         },
-        updatedAt: function() {
+        updatedAt() {
             return Moment(this.exhibit.updated_at).fromNow();
+        },
+        showHeader() {
+            return (this.exhibit.title || this.exhibit.artist || this.exhibit.year);
         }
     },
 
@@ -67,20 +72,3 @@ export default {
     }
 }
 </script>
-
-<style>
-.exhibit-image {
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 50vw;
-}
-.exhibit-image > a {
-    width: 100%;
-    height: 100%;
-    display: inline-block;
-}
-.exhibit-image-container {
-    overflow: hidden;
-}
-</style>

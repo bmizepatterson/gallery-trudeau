@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Exhibit;
+use App\Http\Requests\ExhibitRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ExhibitController extends Controller
 {
+    /**
+     * Require authentication
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -31,11 +40,13 @@ class ExhibitController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ExhibitRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ExhibitRequest $request)
     {
+        $request->validated();
+
         $exhibit = new Exhibit;
         $exhibit->title = $request->title;
         $exhibit->year = $request->year;
@@ -68,7 +79,7 @@ class ExhibitController extends Controller
      */
     public function edit(Exhibit $exhibit)
     {
-        //
+        return view('exhibits.edit', compact('exhibit'));
     }
 
     /**
@@ -91,6 +102,8 @@ class ExhibitController extends Controller
      */
     public function destroy(Exhibit $exhibit)
     {
-        //
+        $exhibit->forceDelete();
+        return redirect()->route('home')
+            ->with('status', 'Exhibit deleted');
     }
 }
