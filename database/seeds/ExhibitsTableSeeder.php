@@ -30,5 +30,23 @@ class ExhibitsTableSeeder extends Seeder
         $e1->url = "https://upload.wikimedia.org/wikipedia/commons/a/a9/Justin_Trudeau_in_Lima%2C_Peru_-_2018_%2841507133581%29_%28cropped%29.jpg";
         $e1->description = "Justin Trudeau with Enrique Peña Nieto in Lima, Peru";
         $e1->save();
+
+        $e2 = new Exhibit;
+        $e2->user_id = $bobby->id;
+        $e2->title = "'I inherited her need to connect emotionally'";
+        $e2->year = "2014";
+        $e2->artist = "Shannon Proudfoot";
+        $e2->url = "https://www.macleans.ca/wp-content/uploads/2016/06/MAC_110_1971_PORTRAIT_YEAR.jpg";
+        $e2->description = "From his birth on Christmas Day in 1971, while his father was prime minister, to his current occupancy of that office himself, Justin Trudeau has lived much of his life in the public eye—and, specifically, in front of the camera. The life moments that are normally captured only in private, blurry snapshots tucked away in some drawer or album have instead, in Justin’s life, been among the images of a country’s political history.";
+        $e2->save();
+
+        $e3 = new Exhibit;
+        $e3->user_id = $bobby->id;
+        $e3->title = "Trudeau at the 2006 leadership convention";
+        $e3->year = "2006";
+        $e3->artist = "ycanada_news";
+        $e3->url = "https://www.macleans.ca/wp-content/uploads/2016/06/MAC_110_1971_PORTRAIT_YEAR.jpg";
+        $e3->description = "From his birth on Christmas Day in 1971, while his father was prime minister, to his current occupancy of that office himself, Justin Trudeau has lived much of his life in the public eye—and, specifically, in front of the camera. The life moments that are normally captured only in private, blurry snapshots tucked away in some drawer or album have instead, in Justin’s life, been among the images of a country’s political history.";
+        $e3->save();
     }
 }
