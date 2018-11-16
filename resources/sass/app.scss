@@ -95,3 +95,17 @@
 .exhibit-image-container {
     overflow: hidden;
 }
+
+// PAGINATION LINKS
+.pagination-links {
+    .pagination {
+        justify-content: space-between;
+        .page-item.disabled {
+            visibility: hidden;
+        }
+        .page-item > .page-link {
+            background-color: $light-gray;
+            color: $light;
+        }
+    }
+}

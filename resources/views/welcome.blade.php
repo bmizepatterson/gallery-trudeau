@@ -7,6 +7,9 @@
 <div class="flex-center full-height position-relative">
 
     <div class="top-right">
+        @if (App\Exhibit::all()->count())
+        <a class="bar-link px-4" href="{{ route('exhibit.index') }}">Exhibits</a>
+        @endif
         @auth
             <a class="bar-link px-4" href="{{ route('home') }}">Home</a>
             <a class="bar-link px-4" href="{{ route('logout') }}"

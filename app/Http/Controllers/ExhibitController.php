@@ -24,7 +24,9 @@ class ExhibitController extends Controller
      */
     public function index()
     {
-        //
+        // Fetch all exhibits and paginate
+        $exhibits = Exhibit::simplePaginate(1);
+        return view('exhibits.index', compact('exhibits'));
     }
 
     /**

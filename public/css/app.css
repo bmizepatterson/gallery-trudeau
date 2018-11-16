@@ -10345,3 +10345,18 @@ a.text-dark:focus {
   overflow: hidden;
 }
 
+.pagination-links .pagination {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.pagination-links .pagination .page-item.disabled {
+  visibility: hidden;
+}
+
+.pagination-links .pagination .page-item > .page-link {
+  background-color: rgba(255, 255, 255, 0.125);
+  color: #f8f9fa;
+}
+
