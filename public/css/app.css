@@ -10236,6 +10236,10 @@ a.text-dark:focus {
   }
 }
 
+:root {
+  scroll-behavior: smooth;
+}
+
 [v-cloak] {
   display: none;
 }

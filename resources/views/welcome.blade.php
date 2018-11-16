@@ -28,8 +28,24 @@
             <a class="px-5" href="{{ route('login') }}">Login</a>
             <a class="px-5" href="{{ route('register') }}">Register</a>
         @endauth
+        <p><a href="#exhibits">today's exhibits</a></p>
+        <a href="#exhibits"><i class="fas fa-arrow-down"></i></a>
     </div>
 
+</div>
+
+<a name="exhibits"></a>
+<div class="pt-5">
+    @foreach (App\Exhibit::all() as $exhibit)
+        <exhibit-card
+            exhibit-json="{{ $exhibit }}"
+            user-json="{{ $exhibit->user }}"
+            show-url="{{ route('exhibit.show', $exhibit) }}"
+            edit-url="{{ route('exhibit.edit', $exhibit) }}"
+            delete-url="{{ route('exhibit.destroy', $exhibit) }}"
+            csrf="{{ csrf_token() }}"
+        ></exhibit-card>
+    @endforeach
 </div>
 
 @endsection
