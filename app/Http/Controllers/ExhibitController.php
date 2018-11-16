@@ -85,13 +85,23 @@ class ExhibitController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ExhibitRequest  $request
      * @param  \App\Exhibit  $exhibit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Exhibit $exhibit)
+    public function update(ExhibitRequest $request, Exhibit $exhibit)
     {
-        //
+        $request->validated();
+
+        $exhibit->title = $request->title;
+        $exhibit->year = $request->year;
+        $exhibit->artist = $request->artist;
+        $exhibit->url = $request->url;
+        $exhibit->description = $request->description;
+
+        $exhibit->save();
+        return redirect()->route('home')
+            ->with('status', 'Exhibit saved');
     }
 
     /**
