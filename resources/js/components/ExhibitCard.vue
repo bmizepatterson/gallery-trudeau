@@ -3,24 +3,24 @@
     <div class="col-md-8 mb-5">
         <div class="card exhibit-image-container">
 
-            <div class="exhibit-image" :style="{ backgroundImage: 'url(' + imageUrl + ')' }">
-                <a :href="imageUrl" target="_blank" rel="noopener noreferrer"></a>
+            <div class="exhibit-image" :style="{ backgroundImage: 'url(' + exhibit.url + ')' }">
+                <a :href="exhibit.url" target="_blank" rel="noopener noreferrer"></a>
             </div>
 
-            <h4 class="card-header m-0"><a :href="exhibitUrl"><slot name="title"></slot></a></h4>
+            <h4 class="card-header m-0"><a :href="showUrl">{{ exhibit.title }}</a></h4>
 
-            <div class="card-body"><slot name="body"></slot></div>
+            <div v-if="exhibit.description" class="card-body">{{ exhibit.description }}</div>
 
             <div class="card-footer">
-                <div v-if="editUrl || deleteUrl" class="float-right pt-1 text-muted">
+                <div v-if="editUrl || deleteUrl" class="float-right text-muted">
                     <a v-if="editUrl" class="m-2" :href="editUrl" data-toggle="tooltip" data-placement="top" title="Edit this exhibit"><i class="fas fa-pen-square"></i></a>
-                    <form v-if="deleteUrl" class="d-none" method="POST" :action="deleteUrl">
+                    <form v-if="deleteUrl" class="d-inline" method="POST" :action="deleteUrl">
                         <input type="hidden" name="_token" :value="csrf">
                         <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-link" data-toggle="tooltip" data-placement="top" title="Delete this exhibit"><i class="fas fa-trash"></i></button>
+                        <button type="submit" class="btn btn-link py-0" data-toggle="tooltip" data-placement="top" title="Delete this exhibit"><i class="fas fa-trash"></i></button>
                     </form>
                 </div>
-                <small><i class="fas fa-user-circle mr-1"></i>posted <template v-if="user">by {{ user }}</template> {{ updatedAt }}</small>
+                <small><i class="fas fa-user-circle mr-1"></i>posted by {{ exhibit.user.name }} {{ updatedAt }}</small>
             </div>
         </div>
     </div>
@@ -30,13 +30,11 @@
 <script>
 export default {
     props: {
-        user: String,
-        exhibitUrl: String,
-        editUrl: String,
-        deleteUrl: String,
-        updatedAtString: String,
-        imageUrl: String,
-        csrf: String
+        exhibitJson: { type: String, required: true },
+        showUrl: { type: String, required: true },
+        editUrl: { type: String, required: true },
+        deleteUrl: { type: String, required: true },
+        csrf: { type: String, required: true },
     },
 
     mounted: function() {
@@ -44,8 +42,11 @@ export default {
     },
 
     computed: {
+        exhibit() {
+            return JSON.parse(this.exhibitJson);
+        },
         updatedAt: function() {
-            return Moment(this.updatedAtString).fromNow();
+            return Moment(this.exhibit.updated_at).fromNow();
         }
     },
 

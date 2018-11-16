@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <input v-focus class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" value="{{ old('title') }}" placeholder="Title" autofocus>
+                            <input class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" value="{{ old('title') }}" placeholder="Title" autofocus>
                             @if ($errors->has('title'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('title') }}</strong>
@@ -70,16 +70,12 @@
     @if (Auth::user()->exhibits()->count())
         @foreach (Auth::user()->exhibits as $exhibit)
             <exhibit-card
-                user="{{ $exhibit->user->name }}"
-                exhibit-url="{{ route('exhibit.show', $exhibit) }}"
+                exhibit-json="{{ $exhibit->with('user')->first() }}"
+                show-url="{{ route('exhibit.show', $exhibit) }}"
                 edit-url="{{ route('exhibit.edit', $exhibit) }}"
                 delete-url="{{ route('exhibit.destroy', $exhibit) }}"
-                updated-at-string="{{ $exhibit->updated_at }}"
-                image-url="{{ $exhibit->url }}"
                 csrf="{{ csrf_token() }}"
-            >
-                {{ $exhibit->title }}
-            </exhibit-card>
+            ></exhibit-card>
         @endforeach
     @endif
 

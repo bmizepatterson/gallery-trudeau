@@ -64436,13 +64436,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        user: String,
-        exhibitUrl: String,
-        editUrl: String,
-        deleteUrl: String,
-        updatedAtString: String,
-        imageUrl: String,
-        csrf: String
+        exhibitJson: { type: String, required: true },
+        showUrl: { type: String, required: true },
+        editUrl: { type: String, required: true },
+        deleteUrl: { type: String, required: true },
+        csrf: { type: String, required: true }
     },
 
     mounted: function mounted() {
@@ -64450,8 +64448,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     computed: {
+        exhibit: function exhibit() {
+            return JSON.parse(this.exhibitJson);
+        },
+
         updatedAt: function updatedAt() {
-            return Moment(this.updatedAtString).fromNow();
+            return Moment(this.exhibit.updated_at).fromNow();
         }
     },
 
@@ -64477,12 +64479,12 @@ var render = function() {
           "div",
           {
             staticClass: "exhibit-image",
-            style: { backgroundImage: "url(" + _vm.imageUrl + ")" }
+            style: { backgroundImage: "url(" + _vm.exhibit.url + ")" }
           },
           [
             _c("a", {
               attrs: {
-                href: _vm.imageUrl,
+                href: _vm.exhibit.url,
                 target: "_blank",
                 rel: "noopener noreferrer"
               }
@@ -64491,14 +64493,20 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("h4", { staticClass: "card-header m-0" }, [
-          _c("a", { attrs: { href: _vm.exhibitUrl } }, [_vm._t("title")], 2)
+          _c("a", { attrs: { href: _vm.showUrl } }, [
+            _vm._v(_vm._s(_vm.exhibit.title))
+          ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [_vm._t("body")], 2),
+        _vm.exhibit.description
+          ? _c("div", { staticClass: "card-body" }, [
+              _vm._v(_vm._s(_vm.exhibit.description))
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _c("div", { staticClass: "card-footer" }, [
           _vm.editUrl || _vm.deleteUrl
-            ? _c("div", { staticClass: "float-right pt-1 text-muted" }, [
+            ? _c("div", { staticClass: "float-right text-muted" }, [
                 _vm.editUrl
                   ? _c(
                       "a",
@@ -64519,7 +64527,7 @@ var render = function() {
                   ? _c(
                       "form",
                       {
-                        staticClass: "d-none",
+                        staticClass: "d-inline",
                         attrs: { method: "POST", action: _vm.deleteUrl }
                       },
                       [
@@ -64543,16 +64551,15 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _c(
-            "small",
-            [
-              _c("i", { staticClass: "fas fa-user-circle mr-1" }),
-              _vm._v("posted "),
-              _vm.user ? [_vm._v("by " + _vm._s(_vm.user))] : _vm._e(),
-              _vm._v(" " + _vm._s(_vm.updatedAt))
-            ],
-            2
-          )
+          _c("small", [
+            _c("i", { staticClass: "fas fa-user-circle mr-1" }),
+            _vm._v(
+              "posted by " +
+                _vm._s(_vm.exhibit.user.name) +
+                " " +
+                _vm._s(_vm.updatedAt)
+            )
+          ])
         ])
       ])
     ])
@@ -64566,7 +64573,7 @@ var staticRenderFns = [
     return _c(
       "button",
       {
-        staticClass: "btn btn-link",
+        staticClass: "btn btn-link py-0",
         attrs: {
           type: "submit",
           "data-toggle": "tooltip",
