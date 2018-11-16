@@ -2255,17 +2255,17 @@ pre code {
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #6c757d;
+  color: rgba(248, 249, 250, 0.4);
   opacity: 1;
 }
 
 .form-control::-ms-input-placeholder {
-  color: #6c757d;
+  color: rgba(248, 249, 250, 0.4);
   opacity: 1;
 }
 
 .form-control::placeholder {
-  color: #6c757d;
+  color: rgba(248, 249, 250, 0.4);
   opacity: 1;
 }
 
