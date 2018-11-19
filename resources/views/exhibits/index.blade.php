@@ -17,8 +17,8 @@
             exhibit-json="{{ $exhibit }}"
             user-json="{{ $exhibit->user }}"
             show-url="{{ route('exhibit.show', $exhibit) }}"
-            edit-url="{{ route('exhibit.edit', $exhibit) }}"
-            delete-url="{{ route('exhibit.destroy', $exhibit) }}"
+            edit-url="{{ Auth::check() ? route('exhibit.edit', $exhibit) : '' }}"
+            delete-url="{{ Auth::check() ? route('exhibit.destroy', $exhibit) : '' }}"
             csrf="{{ csrf_token() }}"
         ></exhibit-card>
     @endforeach
