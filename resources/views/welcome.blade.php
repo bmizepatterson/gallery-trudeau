@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', config('app.name', 'Gallery Trudeau'))
+@section('title', 'Gallery Trudeau')
 
 @section('body')
 
