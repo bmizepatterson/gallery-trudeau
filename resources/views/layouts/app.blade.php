@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    @yield('page-title') | {{ config('app.name', 'Gallery Trudeau') }}
+    @yield('page-title') | Gallery Trudeau
 @endsection
 
 @section('body')
